@@ -1,0 +1,31 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+
+  div 
+    ul
+      each source, i in sources
+        li 
+          b #{source.name} - #{source.description}
+          br
+          a(href='/grafiques/' + source.id) Gràfiques de #{source.name}
+
+        div
+          table
+            thead
+              tr
+                th(data-sort-column="true", style='width:10%') Sensor
+                th(style='width:70%') Description
+                th(style='width:10%') Value
+                th(style='width:10%') Units
+
+            tbody
+              each unit, i in source.units
+                tr
+                  td #{unit.name}
+                  td #{unit.description}
+                  td #{unit.value}
+                  td #{unit.unit}
+          
